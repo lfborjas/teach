@@ -1,5 +1,7 @@
 Teach::Application.routes.draw do
 
+  resources :tasks
+
   resources :challenges
 
   root to: "home#index"

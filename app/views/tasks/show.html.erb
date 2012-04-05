@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Content:</b>
+  <%= @task.content %>
+</p>
+
+<p>
+  <b>Challenge:</b>
+  <%= @task.challenge_id %>
+</p>
+
+<p>
+  <b>Do eval:</b>
+  <%= @task.do_eval %>
+</p>
+
+<p>
+  <b>Expected result:</b>
+  <%= @task.expected_result %>
+</p>
+
+<p>
+  <b>Ordering:</b>
+  <%= @task.ordering %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

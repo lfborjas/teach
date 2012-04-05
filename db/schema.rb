@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405003259) do
+ActiveRecord::Schema.define(:version => 20120405005449) do
 
   create_table "challenges", :force => true do |t|
     t.string   "title"
@@ -30,8 +30,21 @@ ActiveRecord::Schema.define(:version => 20120405003259) do
   create_table "students", :force => true do |t|
     t.string   "email"
     t.string   "token"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "challenge_id"
+    t.integer  "task_id"
+    t.datetime "latest_task_at"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.text     "content"
+    t.integer  "challenge_id"
+    t.boolean  "do_eval"
+    t.text     "expected_result"
+    t.integer  "ordering"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  challenge_id: 1
+  do_eval: false
+  expected_result: MyText
+  ordering: 1
+
+two:
+  content: MyText
+  challenge_id: 1
+  do_eval: false
+  expected_result: MyText
+  ordering: 1
