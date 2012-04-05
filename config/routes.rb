@@ -1,4 +1,8 @@
 Teach::Application.routes.draw do
+
+  resources :challenges
+
+  root to: "home#index"
   devise_for :users
 
   resources :students
