@@ -1,31 +1,26 @@
-<h1>Listing tasks</h1>
-
-<table>
-  <tr>
-    <th>Content</th>
-    <th>Challenge</th>
-    <th>Do eval</th>
-    <th>Expected result</th>
-    <th>Ordering</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @tasks.each do |task| %>
-  <tr>
-    <td><%= task.content %></td>
-    <td><%= task.challenge_id %></td>
-    <td><%= task.do_eval %></td>
-    <td><%= task.expected_result %></td>
-    <td><%= task.ordering %></td>
-    <td><%= link_to 'Show', task %></td>
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Destroy', task, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Tasks</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Content</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.id %></td>
+        <td><%= link_to task.content, task_path(task) %></td>
+        <td><%= task.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_task_path(task), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', task_path(task), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New', new_task_path, :class => 'btn btn-primary' %>

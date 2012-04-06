@@ -3,11 +3,11 @@ class Student < ActiveRecord::Base
   belongs_to :task
 
   def current_challenge
-    challenge
+    challenge.to_param
   end
 
   def current_task
-    task
+    task.try(:to_param)
   end
 
   def as_json(options = nil)

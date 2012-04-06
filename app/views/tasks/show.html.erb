@@ -1,30 +1,32 @@
-<p id="notice"><%= notice %></p>
+<h1>/Task</h1>
 
 <p>
-  <b>Content:</b>
+  <b>Content</b><br>
   <%= @task.content %>
 </p>
 
 <p>
-  <b>Challenge:</b>
+  <b>Challenge</b><br>
   <%= @task.challenge_id %>
 </p>
 
 <p>
-  <b>Do eval:</b>
+  <b>Do eval</b><br>
   <%= @task.do_eval %>
 </p>
 
 <p>
-  <b>Expected result:</b>
+  <b>Expected result</b><br>
   <%= @task.expected_result %>
 </p>
 
 <p>
-  <b>Ordering:</b>
+  <b>Ordering</b><br>
   <%= @task.ordering %>
 </p>
 
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<div class="form-actions">
+  <%= link_to 'Back', tasks_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_task_path(@task), :class => 'btn' %>
+  <%= link_to 'Delete', task_path(@task), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

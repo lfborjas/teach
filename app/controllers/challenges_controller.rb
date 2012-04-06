@@ -1,5 +1,19 @@
 class ChallengesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:take]
+
+  def take
+    @challenge = Challenge.find_by_slug(params[:id])
+    @student = Student.find(params[:student_id])
+
+    @student.challenge = @challenge
+    @student.task = @challenge.tasks.first
+
+    @student.save
+
+    respond_to do |format|
+      format.json { render json: @student }
+    end
+  end
 
   # GET /challenges
   # GET /challenges.json
@@ -15,7 +29,7 @@ class ChallengesController < ApplicationController
   # GET /challenges/1
   # GET /challenges/1.json
   def show
-    @challenge = Challenge.find(params[:id])
+    @challenge = Challenge.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +50,7 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/1/edit
   def edit
-    @challenge = Challenge.find(params[:id])
+    @challenge = Challenge.find_by_slug(params[:id])
   end
 
   # POST /challenges
@@ -58,7 +72,7 @@ class ChallengesController < ApplicationController
   # PUT /challenges/1
   # PUT /challenges/1.json
   def update
-    @challenge = Challenge.find(params[:id])
+    @challenge = Challenge.find_by_slug(params[:id])
 
     respond_to do |format|
       if @challenge.update_attributes(params[:challenge])
@@ -74,7 +88,7 @@ class ChallengesController < ApplicationController
   # DELETE /challenges/1
   # DELETE /challenges/1.json
   def destroy
-    @challenge = Challenge.find(params[:id])
+    @challenge = Challenge.find_by_slug(params[:id])
     @challenge.destroy
 
     respond_to do |format|

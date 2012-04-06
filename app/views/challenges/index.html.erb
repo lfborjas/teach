@@ -1,25 +1,26 @@
-<h1>Listing challenges</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Slug</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @challenges.each do |challenge| %>
-  <tr>
-    <td><%= challenge.title %></td>
-    <td><%= challenge.slug %></td>
-    <td><%= link_to 'Show', challenge %></td>
-    <td><%= link_to 'Edit', edit_challenge_path(challenge) %></td>
-    <td><%= link_to 'Destroy', challenge, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Challenges</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @challenges.each do |challenge| %>
+      <tr>
+        <td><%= challenge.id %></td>
+        <td><%= link_to challenge.title, challenge_path(challenge) %></td>
+        <td><%= challenge.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_challenge_path(challenge), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', challenge_path(challenge), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Challenge', new_challenge_path %>
+<%= link_to 'New', new_challenge_path, :class => 'btn btn-primary' %>

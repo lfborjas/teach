@@ -1,13 +1,16 @@
 Teach::Application.routes.draw do
+  devise_for :users
 
   resources :tasks
 
   resources :challenges
 
   resources :students do
-    get :status, on: :member
     resources :challenges, only: [:show] do
-      resources :tasks, only: [:update]
+      post :take, on: :member
+      resources :tasks, only: [:show] do
+        get :current, on: :collection
+      end
     end
   end
 

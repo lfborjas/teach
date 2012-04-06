@@ -1,15 +1,45 @@
-<%= simple_form_for(@task) do |f| %>
-  <%= f.error_notification %>
+<%= form_for @task, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> /Task</legend>
 
-  <div class="form-inputs">
-    <%= f.input :content %>
-    <%= f.input :challenge_id %>
-    <%= f.input :do_eval %>
-    <%= f.input :expected_result %>
-    <%= f.input :ordering %>
-  </div>
+    <div class="control-group">
+      <%= f.label :content, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :content, :class => 'text_area' %>
+      </div>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <div class="control-group">
+      <%= f.label :challenge_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :challenge_id, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :do_eval, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.check_box :do_eval, :class => 'check_box' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :expected_result, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :expected_result, :class => 'text_area' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :ordering, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :ordering, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', tasks_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>

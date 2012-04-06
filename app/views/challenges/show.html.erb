@@ -1,15 +1,17 @@
-<p id="notice"><%= notice %></p>
+<h1>/Challenge</h1>
 
 <p>
-  <b>Title:</b>
+  <b>Title</b><br>
   <%= @challenge.title %>
 </p>
 
 <p>
-  <b>Slug:</b>
+  <b>Slug</b><br>
   <%= @challenge.slug %>
 </p>
 
-
-<%= link_to 'Edit', edit_challenge_path(@challenge) %> |
-<%= link_to 'Back', challenges_path %>
+<div class="form-actions">
+  <%= link_to 'Back', challenges_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_challenge_path(@challenge), :class => 'btn' %>
+  <%= link_to 'Delete', challenge_path(@challenge), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

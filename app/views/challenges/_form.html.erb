@@ -1,12 +1,17 @@
-<%= simple_form_for(@challenge) do |f| %>
-  <%= f.error_notification %>
+<%= form_for @challenge, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> /Challenge</legend>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :slug %>
-  </div>
+    <div class="control-group">
+      <%= f.label :title, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :title, :class => 'text_field' %>
+      </div>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', challenges_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>
