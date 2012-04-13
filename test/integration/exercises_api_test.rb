@@ -17,6 +17,5 @@ class ExercisesApiTest < ActionDispatch::IntegrationTest
     assert_equal 1, student.exercises.count
     assert_equal 'ex1.rb', student.exercises.first.name
     assert_equal 'goodbye world', student.exercises.first.contents
-
   end
 end

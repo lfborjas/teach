@@ -3,6 +3,7 @@ class ExercisesController < ApplicationController
   # GET /exercises
   # GET /exercises.json
   before_filter :set_scope
+  before_filter :only_admin, only: [:show]
 
   def index
     @exercises = Exercise.by_student
@@ -45,6 +46,7 @@ class ExercisesController < ApplicationController
   def create
     @exercise = @student.exercises.find_or_create_by_name(params[:exercise][:name])
     @exercise.contents = params[:exercise][:contents]
+    @exercise.ordering = params[:exercise][:ordering]
 
     @exercise.save
 
@@ -87,5 +89,11 @@ class ExercisesController < ApplicationController
                        else
                         Exercise
                       end
+  end
+
+  def only_admin
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 end

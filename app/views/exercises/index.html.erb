@@ -13,8 +13,8 @@
         <td><% unless user_signed_in? %>
           <span class="label label-<%= student.exercise_status %>"> <%= student.exercise_display %> </span>
         <%else%>
-          <% exercises.each_with_index do |exercise, index| %>
-            <span class="badge badge-info"> <%= link_to index, exercise %> </span>
+          <% exercises.each do |exercise| %>
+            <span class="badge badge-info"> <%= link_to exercise.ordering, exercise %> </span>
           <%end%>
         <% end%></td>
       </tr>

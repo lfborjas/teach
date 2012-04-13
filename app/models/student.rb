@@ -7,7 +7,7 @@ class Student < ActiveRecord::Base
 
   def exercise_status
     case exercises.count
-      when 0..4 then 'error'
+      when 0..4 then 'important'
       when 5..9 then 'warning'
       else 'success'
     end

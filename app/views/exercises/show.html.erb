@@ -1,22 +1,7 @@
-<h1>/Exercise</h1>
+<h2>
+  <%= @exercise.student.account_number %>'s solution to exercise <%= @exercise.ordering %>
+</h2>
 
-<p>
-  <b>Name</b><br>
-  <%= @exercise.name %>
-</p>
-
-<p>
-  <b>Contents</b><br>
-  <%= @exercise.contents %>
-</p>
-
-<p>
-  <b>Student</b><br>
-  <%= @exercise.student_id %>
-</p>
-
-<div class="form-actions">
-  <%= link_to 'Back', exercises_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_exercise_path(@exercise), :class => 'btn' %>
-  <%= link_to 'Delete', exercise_path(@exercise), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
-</div>
+<pre class="prettyprint linenums">
+  <%=  @exercise.contents  %>
+</pre>
