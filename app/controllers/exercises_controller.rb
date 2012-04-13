@@ -5,7 +5,7 @@ class ExercisesController < ApplicationController
   before_filter :set_scope
 
   def index
-    @exercises = Exercise.all
+    @exercises = Exercise.by_student
 
     respond_to do |format|
       format.html # index.html.erb

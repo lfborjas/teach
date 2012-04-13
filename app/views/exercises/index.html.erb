@@ -2,25 +2,22 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Created at</th>
-      <th>Actions</th>
+      <th>Student</th>
+      <th>Exercises</th>
     </tr>
   </thead>
   <tbody>
-    <% @exercises.each do |exercise| %>
+    <% @exercises.each do |student, exercises| %>
       <tr>
-        <td><%= exercise.id %></td>
-        <td><%= link_to exercise.name, exercise_path(exercise) %></td>
-        <td><%= exercise.created_at %></td>
-        <td>
-          <%= link_to 'Edit', edit_exercise_path(exercise), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', exercise_path(exercise), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
-        </td>
+        <td><%= student.account_number %></td>
+        <td><% unless user_signed_in? %>
+          <span class="label label-<%= student.exercise_status %>"> <%= student.exercise_display %> </span>
+        <%else%>
+          <% exercises.each_with_index do |exercise, index| %>
+            <span class="badge badge-info"> <%= link_to index, exercise %> </span>
+          <%end%>
+        <% end%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New', new_exercise_path, :class => 'btn btn-primary' %>

@@ -10,7 +10,7 @@ Teach::Application.routes.draw do
   resources :challenges
 
   resources :students do
-    resources :exercises, only: [:show, :create, :update] 
+    resources :exercises, only: [:show, :create, :update, :new] 
   end
 
   # The priority is based upon order of creation:
