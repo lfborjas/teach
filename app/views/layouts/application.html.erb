@@ -34,6 +34,7 @@
           <div class="container nav-collapse">
             <ul class="nav">
               <% if user_signed_in? %>
+                <li><%= link_to "Results", exercises_path %></li>
               <%end%>
             </ul>
             <ul class="nav pull-right">
