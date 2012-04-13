@@ -1,18 +1,19 @@
 class Student < ActiveRecord::Base
-  belongs_to :challenge
-  belongs_to :task
+  has_many :exercises
 
-  def current_challenge
-    challenge.to_param
+  def exercise_display
+    "#{exercises.count} / 10"
   end
 
-  def current_task
-    task.try(:to_param)
+  def exercise_status
+    case exercises.count
+      when 0..4 then 'error'
+      when 5..9 then 'warning'
+      else 'success'
+    end
   end
 
-  def as_json(options = nil)
-    options ||= {}
-    options[:methods] = [:current_challenge, :current_task]
-    super
+  def to_param
+    account_number
   end
 end

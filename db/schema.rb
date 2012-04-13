@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405005449) do
+ActiveRecord::Schema.define(:version => 20120413035451) do
 
   create_table "challenges", :force => true do |t|
     t.string   "title"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(:version => 20120405005449) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "exercises", :force => true do |t|
+    t.string   "name"
+    t.text     "contents"
+    t.integer  "student_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "students", :force => true do |t|
     t.string   "email"
     t.string   "token"
@@ -35,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20120405005449) do
     t.integer  "challenge_id"
     t.integer  "task_id"
     t.datetime "latest_task_at"
+    t.string   "account_number"
   end
 
   create_table "tasks", :force => true do |t|

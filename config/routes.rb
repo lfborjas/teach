@@ -1,4 +1,8 @@
 Teach::Application.routes.draw do
+  resources :exercises
+
+  root to: 'exercises#index'
+
   devise_for :users
 
   resources :tasks
@@ -6,12 +10,7 @@ Teach::Application.routes.draw do
   resources :challenges
 
   resources :students do
-    resources :challenges, only: [:show] do
-      post :take, on: :member
-      resources :tasks, only: [:show] do
-        get :current, on: :collection
-      end
-    end
+    resources :exercises, only: [:show, :create, :update] 
   end
 
   # The priority is based upon order of creation:
