@@ -1,7 +1,10 @@
 Teach::Application.routes.draw do
+
+  resources :problems
+
   resources :exercises
 
-  root to: 'exercises#index'
+  root to: 'home#index'
 
   devise_for :users
 

@@ -9,6 +9,7 @@ gem 'pg', group: :production
 gem 'mysql2', group: :development
 gem 'simple_form'
 gem 'devise'
+gem 'redcarpet', '1.17.2'
 
 gem 'twitter-bootstrap-rails'
 # Gems used only for assets and not required

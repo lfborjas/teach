@@ -33,8 +33,9 @@
           <a class="brand" href="/">Aprende Ruby</a>
           <div class="container nav-collapse">
             <ul class="nav">
+              <li><%= link_to "Results", exercises_path %></li>
               <% if user_signed_in? %>
-                <li><%= link_to "Results", exercises_path %></li>
+                <li><%= link_to "Problems", problems_path %></li>
               <%end%>
             </ul>
             <ul class="nav pull-right">

@@ -1,2 +1,34 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Bienvenidos</h1>
+
+<p>Acá encontrarán una serie de ejercicios que deben resolver. Pueden resolverlos en cualquier 
+orden.</p>
+
+<p>
+Los entregarán en línea de comandos usando un programín que yo escribí. Para instalarlo, simplemente escriban
+
+<pre><code>
+  gem install learn
+</code></pre>
+</p>
+
+<p>
+Una vez instalado ese programa, sólo tendrán que escribir <code>learn exX.rb</code>, donde <code>X</code> es
+el número de ejercicio que están entregando, que debería ser un archivo de ruby. Por ejemplo, si yo estuviera
+entregando el ejercicio número dos, escribiría
+
+<pre>
+  <code>
+    learn ex2.rb
+  </code>
+</pre>
+
+La primera vez que entreguen un ejercicio, les pedirá su número de cuenta. El programa está en inglés porque las
+tildes arruinan algunas terminales y ¡preferiría no programar a programar en español sin tildes!
+</p>
+
+<h2>Los ejercicios</h2>
+
+<% @problems.each_with_index do |problem, index| %>
+  <h3>Ejercicio #<%= index + 1%></h3>
+  <%= markdown problem.description %>
+<% end %>
