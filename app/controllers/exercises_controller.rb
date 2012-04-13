@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+  respond_to :html, :json
   # GET /exercises
   # GET /exercises.json
   before_filter :set_scope
@@ -42,17 +43,12 @@ class ExercisesController < ApplicationController
   # POST /exercises
   # POST /exercises.json
   def create
-    @exercise = @student.exercises.build(params[:exercise])
+    @exercise = @student.exercises.find_or_create_by_name(params[:exercise][:name])
+    @exercise.contents = params[:exercise][:contents]
 
-    respond_to do |format|
-      if @exercise.save
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
-        format.json { render json: @exercise, status: :created, location: @exercise }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @exercise.errors, status: :unprocessable_entity }
-      end
-    end
+    @exercise.save
+
+    respond_with @exercise
   end
 
   # PUT /exercises/1
