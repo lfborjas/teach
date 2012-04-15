@@ -31,4 +31,9 @@ tildes arruinan algunas terminales y ¡preferiría no programar a programar en e
 <% @problems.each_with_index do |problem, index| %>
   <h3>Ejercicio #<%= index + 1%></h3>
   <%= markdown problem.description %>
+
+  <% if problem.show_solution %>
+    <h4>Solución</h4>
+    <%= markdown problem.solution%>
+  <%end%>
 <% end %>
