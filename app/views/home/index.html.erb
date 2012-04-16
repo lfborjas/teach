@@ -32,7 +32,7 @@ tildes arruinan algunas terminales y ¡preferiría no programar a programar en e
   <h3>Ejercicio #<%= index + 1%></h3>
   <%= markdown problem.description %>
 
-  <% if problem.show_solution and problem.solution.present? %>
+  <% if user_signed_in? and problem.solution.present? %>
     <h4>Solución</h4>
     <%= markdown(problem.solution)%>
   <%end%>
